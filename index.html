@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<link href="/src/css/default.css" media="screen" rel="Stylesheet" type="text/css"/>
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		
+		<script src="src/rebox/core.js"></script>
+		<script src="src/rebox/curtain.js"></script>
+		<script src="src/rebox/container.js"></script>
+		<script src="src/rebox/input-parser.js"></script>
+		<script src="src/rebox/image.js"></script>
+		
+	</head>
+	<body>
+		<a href="http://placekitten.com/400/400#.jpg">Show photo</a>
+		<br />
+		<a href="http://placekitten.com/500/500#.jpg">Show another photo</a>
+		
+		<script>
+		
+		$(function() {
+			$('a').click(function(e) {
+				e.preventDefault();
+				Rebox.open($(this).attr('href'));
+			});
+		});
+
+		</script>
+	</body>
+</html>
