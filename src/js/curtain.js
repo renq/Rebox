@@ -16,7 +16,7 @@
 				curtain.getElement().css({
 					height: $document.height(),
 					width: $document.width(),
-				})
+				});
 			});
 		};
 
@@ -27,10 +27,11 @@
 			.css({
 				height: $document.height(),
 				width: $document.width(),
-			})
-			.hide();
+			});
 		attachEvents(this);
 		$('body').append(this.$element);
+		// Fix for CSS animations that runs immediately after creation of element. 
+		this.$element.outerWidth();
 	};
 	
 	Rebox.Curtain.prototype.getElement = function() {
@@ -38,11 +39,11 @@
 	};
 	
 	Rebox.Curtain.prototype.show = function() {
-		this.getElement().fadeIn();
+		this.getElement().addClass(Rebox.defaults.prefix + 'show');
 	};
 	
 	Rebox.Curtain.prototype.hide = function() {
-		this.getElement().fadeOut();
+		this.getElement().removeClass(Rebox.defaults.prefix + 'show');
 	};
 	
 })(Rebox.defaults.library);

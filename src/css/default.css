@@ -6,9 +6,17 @@
 	height: 100%;
 	width: 100%;
 	background: black;
-	opacity: 0.8;
 	z-index: 1000;
+	opacity: 0;
+	visibility: hidden;
+	transition: visibility 500ms 0s linear, opacity 500ms linear;
+	-webkit-transition: visibility 500ms 0s linear, opacity 500ms linear;
 }
+.rebox-curtain.rebox-show {
+	visibility: visible;
+	opacity: 0.8;	
+}
+
 .rebox-container {
 	position: absolute;
 	left: 0;
@@ -18,6 +26,15 @@
 	z-index: 1001;
 	background-color: black;
 	border: 2px solid #666;
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 700ms 0s linear, opacity 700ms linear;
+	-webkit-transition: visibility 700ms 0s linear, opacity 700ms linear;
+}
+
+.rebox-container.rebox-show {
+	visibility: visible;
+	opacity: 1;
 }
 
 .rebox-container-content {
@@ -47,6 +64,7 @@
 
 .rebox-container-close-button:after {
 	transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
 	content: "+";
 	line-height: 60px;
 	display: inline-block;

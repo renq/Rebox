@@ -23,7 +23,7 @@
 		attachEvents = function(container) {
 			closeButton.click(function(e) {
 				e.preventDefault();
-				container.empty();
+				// container.empty();
 				Rebox.close();
 			});
 			$(window).resize(function() {
@@ -38,14 +38,15 @@
 	Rebox.Container = function() {
 		this.$element = $('<div>')
 			.addClass(Rebox.defaults.prefix + 'container')
-			.hide()
 			.appendTo($('body'));
 		createHtml(this);
 		attachEvents(this);
+		// Fix for CSS animations that runs immediately after creation of element. 
+		this.$element.outerWidth();
 	};
 	
-	Rebox.Container.prototype.show = function() {
-		this.getElement().fadeIn();
+	Rebox.Container.prototype.show = function() {;
+		this.getElement().addClass(Rebox.defaults.prefix + 'show');
 		this.getElement().css({
 			left: '' + (($document.width()-this.getElement().outerWidth()) / 2) + 'px',
 			top: '' + (($document.height()-this.getElement().outerHeight()) / 2) + 'px'
@@ -53,8 +54,8 @@
 	};
 	
 	Rebox.Container.prototype.hide = function() {
-		this.getElement().fadeOut();
-		this.empty();
+		this.getElement().removeClass(Rebox.defaults.prefix + 'show');
+		// this.empty();
 	};
 	
 	Rebox.Container.prototype.getElement = function() {
